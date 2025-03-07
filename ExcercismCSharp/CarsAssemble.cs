@@ -8,10 +8,9 @@ namespace ExcercismCSharp
 {
     public static class AssemblyLine
     {
-        //public static double Succe
         public static double SuccessRate(int speed)
         {
-            if(speed == 0) return 0;
+            if (speed == 0) return 0;
 
             if (speed >= 1 && speed <= 4) return 1;
 
@@ -22,6 +21,16 @@ namespace ExcercismCSharp
             if (speed >= 10) return 0.77;
 
             return 0;
+        }
+
+        public static double ProductionRatePerHour(int speed)
+        {
+            return speed*221*SuccessRate(speed);
+        }
+
+        public static int WorkingItemsPerMinute(int speed)
+        {
+            return (int) ProductionRatePerHour(speed)/60;
         }
     }
 }

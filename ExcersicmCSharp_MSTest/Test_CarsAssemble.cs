@@ -61,5 +61,62 @@ namespace ExcersicmCSharp_MSTest
                 Assert.AreEqual(0, AssemblyLine.SuccessRate(-1));
             }
         }
+
+        [TestClass]
+        public class ProductionRatePerHour
+        {
+            [TestMethod]
+            public void CanCall()
+            {
+                AssemblyLine.ProductionRatePerHour(0);
+            }
+
+            [TestMethod]
+            public void SpeedTeir0()
+            {
+                Assert.AreEqual(0, AssemblyLine.ProductionRatePerHour(0));
+            }
+
+            [TestMethod]
+            public void SpeedTeir1_One()
+            {
+                Assert.AreEqual(221, AssemblyLine.ProductionRatePerHour(1));
+            }
+
+            [TestMethod]
+            public void SpeedTeir1_Two()
+            {
+                Assert.AreEqual(442, AssemblyLine.ProductionRatePerHour(2));
+            }
+
+            [TestMethod]
+            public void SpeedTeir2()
+            {
+                Assert.AreEqual(1193.4, AssemblyLine.ProductionRatePerHour(6));
+            }
+
+            [TestMethod]
+            public void SpeedTeir3()
+            {
+                Assert.AreEqual(1193.4, AssemblyLine.ProductionRatePerHour(6));
+            }
+        }
+
+        [TestClass]
+        public class WorkingItemsPerMinute
+        {
+            [TestMethod]
+            public void CanCall()
+            {
+                AssemblyLine.WorkingItemsPerMinute(0);
+            }
+
+            [TestMethod]
+            public void ItemsPerMinSpeed6()
+            {
+                Assert.AreEqual(19, AssemblyLine.WorkingItemsPerMinute(6));
+            }
+        }
+
     }
 }
