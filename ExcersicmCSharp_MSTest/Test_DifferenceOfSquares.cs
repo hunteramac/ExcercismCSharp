@@ -29,6 +29,18 @@ namespace ExcersicmCSharp_MSTest
             {
                 Assert.AreEqual(DifferenceOfSquares.CalculateSquareOfSum(2), 9);
             }
+
+            [TestMethod]
+            public void NegativeMaxIsPos()
+            {
+                Assert.AreEqual(DifferenceOfSquares.CalculateSquareOfSum(1), 1);
+            }
+
+            [TestMethod]
+            public void SquareOfSumLargeMax()
+            {
+                Assert.AreEqual(DifferenceOfSquares.CalculateSquareOfSum(10), 3025);
+            }
         }
     }
 }

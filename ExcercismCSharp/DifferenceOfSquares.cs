@@ -9,10 +9,8 @@ public static class DifferenceOfSquares
     public static int CalculateSquareOfSum(int max)
     {
         int sum = 0;
-        for(int i = 0; i<=max; ++i)
-        {
-            sum += i;
-        }
-        return sum*sum;
+        IEnumerable<int> range = Enumerable.Range(0, max + 1);
+        sum = range.Sum();
+        return sum * sum;
     }
 }
