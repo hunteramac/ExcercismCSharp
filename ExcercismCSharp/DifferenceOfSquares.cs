@@ -13,4 +13,16 @@ public static class DifferenceOfSquares
         sum = range.Sum();
         return sum * sum;
     }
+
+    public static int CalculateSumOfSquares(int max)
+    {
+        IEnumerable<int> range = Enumerable.Range(0, max + 1);
+        //non lib soloution
+        int sum = 0;
+        foreach(int index in range)
+        {
+            sum += index * index;
+        }
+        return sum;
+    }
 }
