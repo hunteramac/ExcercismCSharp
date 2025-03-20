@@ -25,4 +25,9 @@ public static class DifferenceOfSquares
         }
         return sum;
     }
+
+    public static int CalculateDifferenceOfSquares(int max)
+    {
+        return CalculateSquareOfSum(max) - CalculateSumOfSquares(max);
+    }
 }

@@ -70,5 +70,33 @@ namespace ExcersicmCSharp_MSTest
                 Assert.AreEqual(DifferenceOfSquares.CalculateSumOfSquares(2), 5);
             }
         }
+
+        [TestClass]
+        public class CalculateDifferenceOfSquares
+        {
+            [TestMethod]
+            public void CanCall()
+            {
+                DifferenceOfSquares.CalculateDifferenceOfSquares(0);
+            }
+
+            [TestMethod]
+            public void ZeroCase()
+            {
+                Assert.AreEqual(DifferenceOfSquares.CalculateDifferenceOfSquares(0), 0);
+            }
+
+            [TestMethod]
+            public void MaxIsOne()
+            {
+                Assert.AreEqual(DifferenceOfSquares.CalculateDifferenceOfSquares(1), 0);
+            }
+
+            [TestMethod]
+            public void MaxIsTen()
+            {
+                Assert.AreEqual(DifferenceOfSquares.CalculateDifferenceOfSquares(10), 2640);
+            }
+        }
     }
 }
