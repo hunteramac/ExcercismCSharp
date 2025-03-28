@@ -10,6 +10,60 @@ namespace ExcersicmCSharp_MSTest
     namespace TestGameOfLife
     {
         [TestClass]
+        public class NumberOfLiveNeighbors
+        {
+
+
+            [TestMethod]
+            public void OneCell()
+            {
+                int[,] matrix = new int[,] {
+                    { 1 }
+                };
+
+                Assert.AreEqual(0, GameOfLife.numberOfLiveNeighbors(0, 0, matrix));
+            }
+
+            [TestMethod]
+            public void HasOneLiveNeighbor()
+            {
+                int[,] matrix = new int[,] {
+                    { 1, 1 }
+                };
+
+                Assert.AreEqual(1, GameOfLife.numberOfLiveNeighbors(0, 0, matrix));
+
+            }
+        }
+
+        [TestClass]
+        public class CanLiveOn
+        {
+            [TestMethod]
+            public void CanCall()
+            {
+                int[,] matrix = new int[,] {
+                    { 0, 0 },
+                    { 1, 0 },
+                };
+
+                Assert.IsFalse(GameOfLife.canLiveOn(0, 1, matrix));
+            }
+
+            [TestMethod]
+            public void HasTwoNeighbors()
+            {
+                int[,] matrix = new int[,] {
+                    { 1, 1 },
+                    { 1, 0 },
+                };
+
+                Assert.IsTrue(GameOfLife.canLiveOn(0, 0, matrix));
+            }
+        }
+
+
+        [TestClass]
         public class Tick
         {
             [TestMethod]
@@ -33,7 +87,49 @@ namespace ExcersicmCSharp_MSTest
                     { 0 }
                 };
 
-                Assert.AreEqual(GameOfLife.Tick(inputMatrix),resultMatrix);
+                CollectionAssert.AreEqual(GameOfLife.Tick(inputMatrix),resultMatrix);
+            }
+
+            [TestMethod]
+            public void OneLiveCellDies()
+            {
+                int[,] inputMatrix = new int[,] {
+                    { 1 }
+                };
+
+                int[,] resultMatrix = new int[,] {
+                    { 0 }
+                };
+
+                CollectionAssert.AreEqual(GameOfLife.Tick(inputMatrix), resultMatrix);
+            }
+
+            [TestMethod]
+            public void TwoLiveCellsNotNeighbors()
+            {
+                int[,] inputMatrix = new int[,] {
+                    { 1, 0, 1 }
+                };
+
+                int[,] resultMatrix = new int[,] {
+                    { 0, 0, 0 }
+                };
+
+                CollectionAssert.AreEqual(GameOfLife.Tick(inputMatrix), resultMatrix);
+            }
+
+            [TestMethod]
+            public void OneLiveCellWithTwoLiveNeighbors()
+            {
+                int[,] inputMatrix = new int[,] {
+                    { 1, 1, 1 }
+                };
+
+                int[,] resultMatrix = new int[,] {
+                    { 0, 1, 0 }
+                };
+
+                CollectionAssert.AreEqual(GameOfLife.Tick(inputMatrix), resultMatrix);
             }
         }
     }
