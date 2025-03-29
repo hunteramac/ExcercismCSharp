@@ -34,6 +34,29 @@ namespace ExcersicmCSharp_MSTest
                 Assert.AreEqual(1, GameOfLife.numberOfLiveNeighbors(0, 0, matrix));
 
             }
+
+            [TestMethod]
+            public void HasTwoLiveNeighborsHorizontally()
+            {
+                int[,] matrix = new int[,] {
+                    { 1, 1, 1}
+                };
+
+                Assert.AreEqual(2, GameOfLife.numberOfLiveNeighbors(1, 0, matrix));
+
+            }
+
+            [TestMethod]
+            public void HasTwoLiveNeighborsVertHz_LeftCorner()
+            {
+                int[,] matrix = new int[,] {
+                    { 1, 1},
+                    { 1, 0}
+                };
+
+                Assert.AreEqual(2, GameOfLife.numberOfLiveNeighbors(0, 0, matrix));
+
+            }
         }
 
         [TestClass]
@@ -118,15 +141,19 @@ namespace ExcersicmCSharp_MSTest
                 CollectionAssert.AreEqual(GameOfLife.Tick(inputMatrix), resultMatrix);
             }
 
+            /// <summary>
+            /// This is because rules of game of life applied sequentially per cell.
+            /// The left cell is dead before the middel one is checked.
+            /// </summary>
             [TestMethod]
-            public void OneLiveCellWithTwoLiveNeighbors()
+            public void AliveMiddleCellBetweenTwoAliveStillDies()
             {
                 int[,] inputMatrix = new int[,] {
                     { 1, 1, 1 }
                 };
 
                 int[,] resultMatrix = new int[,] {
-                    { 0, 1, 0 }
+                    { 0, 0, 0 }
                 };
 
                 CollectionAssert.AreEqual(GameOfLife.Tick(inputMatrix), resultMatrix);

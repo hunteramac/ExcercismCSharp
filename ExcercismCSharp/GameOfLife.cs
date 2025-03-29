@@ -10,10 +10,21 @@ namespace ExcercismCSharp
     {
         public static int numberOfLiveNeighbors(int i, int j, int[,] matrix)
         {
+            int numNeighbors = 0;
+
+            //Check right
             if (i+1 < matrix.GetLength(1) && matrix[j, i + 1] == 1)
-                return 1;
-            else
-                return 0;
+                ++numNeighbors;
+
+            //Check left
+            if(i-1 >= 0 && matrix[j, i - 1] == 1)
+                ++numNeighbors;
+
+            //Check down
+            if(j+1 < matrix.GetLength(0) && matrix[j + 1, i] == 1)
+                ++numNeighbors;
+
+            return numNeighbors;
         }
 
         // Any cell with exactly two or three live neighbors lives on
