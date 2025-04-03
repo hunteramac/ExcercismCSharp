@@ -57,6 +57,58 @@ namespace ExcersicmCSharp_MSTest
                 Assert.AreEqual(2, GameOfLife.numberOfLiveNeighbors(0, 0, matrix));
 
             }
+
+            [TestMethod]
+            public void HasTwoLiveNeighborsUpAndDiagonal()
+            {
+                int[,] matrix = new int[,] {
+                    { 1, 1},
+                    { 1, 0}
+                };
+
+                Assert.AreEqual(2, GameOfLife.numberOfLiveNeighbors(0, 1, matrix));
+
+            }
+
+            [TestMethod]
+            public void Has8LiveNeighbors()
+            {
+                int[,] matrix = new int[,] {
+                    { 1, 1, 1},
+                    { 1, 1, 1},
+                    {1, 1, 1 }
+                };
+
+                Assert.AreEqual(8, GameOfLife.numberOfLiveNeighbors(1, 1, matrix));
+
+            }
+
+            [TestMethod]
+            public void HasNoNeighborsCentral()
+            {
+                int[,] matrix = new int[,] {
+                    { 0, 0, 0},
+                    { 0, 1, 0},
+                    {0, 0, 0 }
+                };
+
+                Assert.AreEqual(0, GameOfLife.numberOfLiveNeighbors(1, 1, matrix));
+
+            }
+
+            [TestMethod]
+            public void BottomCorner()
+            {
+                int[,] matrix = new int[,] {
+                    { 0, 0, 0},
+                    { 0, 1, 1},
+                    {0, 1, 1 }
+                };
+
+                Assert.AreEqual(3, GameOfLife.numberOfLiveNeighbors(2, 2, matrix));
+
+            }
+
         }
 
         [TestClass]
@@ -110,7 +162,7 @@ namespace ExcersicmCSharp_MSTest
                     { 0 }
                 };
 
-                CollectionAssert.AreEqual(GameOfLife.Tick(inputMatrix),resultMatrix);
+                CollectionAssert.AreEqual(GameOfLife.Tick(inputMatrix), resultMatrix);
             }
 
             [TestMethod]
@@ -141,10 +193,6 @@ namespace ExcersicmCSharp_MSTest
                 CollectionAssert.AreEqual(GameOfLife.Tick(inputMatrix), resultMatrix);
             }
 
-            /// <summary>
-            /// This is because rules of game of life applied sequentially per cell.
-            /// The left cell is dead before the middel one is checked.
-            /// </summary>
             [TestMethod]
             public void AliveMiddleCellBetweenTwoAliveStillDies()
             {
@@ -153,7 +201,27 @@ namespace ExcersicmCSharp_MSTest
                 };
 
                 int[,] resultMatrix = new int[,] {
-                    { 0, 0, 0 }
+                    { 0, 1, 0 }
+                };
+
+                CollectionAssert.AreEqual(GameOfLife.Tick(inputMatrix), resultMatrix);
+            }
+
+            // Do the rules get applied, without affecting each other?
+
+            [TestMethod]
+            public void CornerCaseHas2Neighbors()
+            {
+                int[,] inputMatrix = new int[,]
+                {
+                    { 1, 1 },
+                    { 1, 0 }
+                };
+
+                int[,] resultMatrix = new int[,]
+                {
+                        { 1, 1 },
+                        { 1, 1 }
                 };
 
                 CollectionAssert.AreEqual(GameOfLife.Tick(inputMatrix), resultMatrix);
