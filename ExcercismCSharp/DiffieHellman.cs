@@ -26,30 +26,34 @@ namespace ExcercismCSharp
             return true;
         }
 
-        public static BigInteger[] GetPrimeNumberRange(BigInteger max)
+        public static BigInteger[] GetPrimeNumberRange(BigInteger nonInclusiveMaxRange)
         {
-            BigInteger[] result = [];
+            List<BigInteger> result = [];
 
-            BigInteger curInt = 1;
-            while (curInt != max)
+            BigInteger curInt = 2;
+            while (curInt != nonInclusiveMaxRange)
             {
+                if (isPrime(curInt))
+                    result.Add(curInt);
+
                 ++curInt;
-                //Check prime
             }
 
-            return result;
+            return result.ToArray();
         }
 
-        public static BigInteger PrivateKey(BigInteger primeP)
+        public static BigInteger PrivateKey(BigInteger p)
         {
-            if (primeP - 1 == 1)
+            if (p - 1 == 1)
                 throw new Exception("primeP must be larger then 2");
 
             // get a prime number greater then 1, and less than primeP
+            BigInteger[] PrimeRange = GetPrimeNumberRange(p);
 
-
-            return primeP-1;
-            //throw new NotImplementedException("You need to implement this method.");
+            Random rand = new Random();
+            int choosenElementIndex = rand.Next(PrimeRange.Length);
+            
+            return PrimeRange[choosenElementIndex];
         }
 
         public static BigInteger PublicKey(BigInteger primeP, BigInteger primeG, BigInteger privateKey)
