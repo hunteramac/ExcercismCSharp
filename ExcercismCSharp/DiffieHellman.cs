@@ -56,9 +56,10 @@ namespace ExcercismCSharp
             return PrimeRange[choosenElementIndex];
         }
 
-        public static BigInteger PublicKey(BigInteger primeP, BigInteger primeG, BigInteger privateKey)
+        public static BigInteger PublicKey(BigInteger p, BigInteger g, Int32 privateKey)
         {
-            throw new NotImplementedException("You need to implement this method.");
+            return BigInteger.Pow(g, privateKey) % p;
+            //throw new NotImplementedException("You need to implement this method.");
         }
 
         public static BigInteger Secret(BigInteger primeP, BigInteger publicKey, BigInteger privateKey)

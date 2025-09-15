@@ -95,5 +95,27 @@ namespace ExcersicmCSharp_MSTest
                 Assert.IsTrue(result == 3 || result == 2, "Expected PrivateKey(" + result + ") to be equal to 2 or 3");
             }
         }
+
+        [TestClass]
+        public class PublicKey
+        {
+            [TestMethod]
+            public void Callable()
+            {
+                DiffieHellman.PublicKey(1,1,1);
+            }
+
+            [TestMethod]
+            public void ProducesKey()
+            {
+                Assert.AreEqual(DiffieHellman.PublicKey(1, 1, 2),0);
+            }
+
+            [TestMethod]
+            public void ProducesKey2()
+            {
+                Assert.AreEqual(DiffieHellman.PublicKey(5, 2, 7), 3);
+            }
+        }
     }
 }
