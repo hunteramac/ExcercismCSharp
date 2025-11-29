@@ -128,9 +128,27 @@ namespace ExcersicmCSharp_MSTest
             }
 
             [TestMethod]
-            public void Call1()
+            public void AllOnes()
             {
                 Assert.AreEqual(0, DiffieHellman.Secret(1, 1, 1));
+            }
+
+            [TestMethod]
+            public void zeroes()
+            {
+                Assert.AreEqual(0, DiffieHellman.Secret(1, 0, 0));
+            }
+
+            [TestMethod]
+            public void simple1()
+            {
+                Assert.AreEqual(1, DiffieHellman.Secret(2, 5, 1));
+            }
+
+            [TestMethod]
+            public void large1()
+            {
+                Assert.AreEqual(19, DiffieHellman.Secret(23, 5, 15));
             }
         }
     }

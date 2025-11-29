@@ -8,17 +8,9 @@ using System.Numerics;
 namespace ExcercismCSharp
 {
 
+
 public static class DiffieHellman
 {
-    // https://stackoverflow.com/questions/30224589/biginteger-powbiginteger-biginteger
-    public static BigInteger BigPow(BigInteger baseValue, BigInteger exponent)
-    {
-        BigInteger originalValue = baseValue;
-        while (exponent-- > 1)
-            baseValue = BigInteger.Multiply(baseValue, originalValue);
-        return baseValue;
-    }
-
     public static bool isPrime(BigInteger input)
     {
         if (input == 1)
@@ -73,18 +65,16 @@ public static class DiffieHellman
         BigInteger primeG, 
         BigInteger privateKey)
     {
-        return BigPow(primeG, privateKey) % primeP;
-        //throw new NotImplementedException(
-        //"You need to implement this method."
-        //);
+        return BigInteger.ModPow(primeG, privateKey, primeP);
     }
 
     public static BigInteger Secret(
         BigInteger primeP, 
         BigInteger publicKey, 
-        BigInteger privateKey)
+        BigInteger privateKey
+    )
     {
-        return 1;
+        return BigInteger.ModPow(publicKey, privateKey,primeP);
     }
 }
 }
