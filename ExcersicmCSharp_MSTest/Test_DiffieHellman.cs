@@ -126,6 +126,12 @@ namespace ExcersicmCSharp_MSTest
             {
                 DiffieHellman.Secret(1, 1, 1);
             }
+
+            [TestMethod]
+            public void Call1()
+            {
+                Assert.AreEqual(0, DiffieHellman.Secret(1, 1, 1));
+            }
         }
     }
 }
