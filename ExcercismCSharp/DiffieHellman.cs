@@ -7,8 +7,19 @@ using System.Numerics;
 
 namespace ExcercismCSharp
 {
-   public static class DiffieHellman
+
+
+    public static class DiffieHellman
     {
+        // https://stackoverflow.com/questions/30224589/biginteger-powbiginteger-biginteger
+        public static BigInteger BigPow(BigInteger baseValue, BigInteger exponent)
+        {
+            BigInteger originalValue = baseValue;
+            while (exponent-- > 1)
+                baseValue = BigInteger.Multiply(baseValue, originalValue);
+            return baseValue;
+        }
+
         public static bool isPrime(BigInteger input)
         {
             if (input == 1)
@@ -56,15 +67,15 @@ namespace ExcercismCSharp
             return PrimeRange[choosenElementIndex];
         }
 
-        public static BigInteger PublicKey(BigInteger p, BigInteger g, Int32 privateKey)
+        public static BigInteger PublicKey(BigInteger primeP, BigInteger primeG, BigInteger privateKey)
         {
-            return BigInteger.Pow(g, privateKey) % p;
+            return BigPow(primeG, privateKey) % primeP;
             //throw new NotImplementedException("You need to implement this method.");
         }
 
         public static BigInteger Secret(BigInteger primeP, BigInteger publicKey, BigInteger privateKey)
         {
-            throw new NotImplementedException("You need to implement this method.");
+            return 1;
         }
     }
 }

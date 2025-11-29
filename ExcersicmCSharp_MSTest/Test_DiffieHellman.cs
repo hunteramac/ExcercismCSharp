@@ -117,5 +117,15 @@ namespace ExcersicmCSharp_MSTest
                 Assert.AreEqual(DiffieHellman.PublicKey(5, 2, 7), 3);
             }
         }
+
+        [TestClass]
+        public class SecretKey
+        {
+            [TestMethod]
+            public void Callable()
+            {
+                DiffieHellman.Secret(1, 1, 1);
+            }
+        }
     }
 }
